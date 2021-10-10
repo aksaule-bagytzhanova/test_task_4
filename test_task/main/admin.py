@@ -1,8 +1,19 @@
 from django.contrib import admin
-from .models import User, Question, Answer, QuizTakers
-# Register your models here.
+from .models import Question, Answer, QuizTaker, Student, Quiz
 
-admin.site.register(User)
-admin.site.register(Question)
-admin.site.register(Answer)
-admin.site.register(QuizTakers)
+
+@admin.register(Question)
+class QuestionAdmin(admin.ModelAdmin):
+    list_display = ('order', 'text')
+    list_filter = ('quiz', )
+
+
+@admin.register(Answer)
+class AnswerAdmin(admin.ModelAdmin):
+    list_display = ('text', 'is_correct')
+    list_filter = ('question', 'question__quiz')
+
+
+admin.site.register(Student)
+admin.site.register(Quiz)
+admin.site.register(QuizTaker)

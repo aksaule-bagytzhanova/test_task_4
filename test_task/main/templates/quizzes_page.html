@@ -1,0 +1,14 @@
+{% extends 'dashboard.html' %}
+{% block content %}
+
+
+<h1>Hello to Quizzes page!</h1>
+<h3>Quizzes list:</h3>
+
+{% for quiz in quizzes %}
+
+<a class="btn btn-success" href="{% url 'quiz-detail' quiz.id %}">{{quiz.name}}</a>
+
+{% endfor %}
+
+{% endblock %}

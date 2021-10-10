@@ -18,19 +18,35 @@
     </button>
     <div class="collapse navbar-collapse" id="navbarNav">
         <ul class="navbar-nav">
+            {% if user.is_authenticated %}
+
+            <li class="nav-item">
+                <a class="nav-link" href="#">Welcome, {{user.username}}</a>
+            </li>
             <li class="nav-item active">
                 <a class="nav-link" href="{% url 'home' %}">Home page</span></a>
             </li>
             <li class="nav-item">
-                <a class="nav-link" href="{% url 'test' %}">Test page</a>
+                <a class="nav-link" href="{% url 'quizzes' %}">Test page</a>
             </li>
             <li class="nav-item">
                 <a class="nav-link" href="{% url 'result' %}">Result page</a>
             </li>
+            <li class="nav-item">
+                <a class="nav-link" href="/logout">Logout</a>
+            </li>
 
+            {% else %}
+
+            <li class="nav-item">
+                <a class="nav-link" href="/login">Login</a>
+            </li>
+
+            {% endif %}
         </ul>
     </div>
 </nav>
+
 
 {% block content %}
     <h1>Hello to home page!</h1>

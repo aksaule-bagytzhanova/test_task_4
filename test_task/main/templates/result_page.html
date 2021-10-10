@@ -1,7 +1,15 @@
 {% extends 'dashboard.html' %}
 {% block content %}
 
-<h1>Hello to result page!</h1>
 
+<h1>Hello to result page!</h1>
+<h3>Results list:</h3>
+
+{% for result in results %}
+
+<p class="">{{result.created_at}}</p>
+<p class="">{{result.quiz.name}}:   {{result.correct_answers}}</p>
+
+{% endfor %}
 
 {% endblock %}
